@@ -1,0 +1,3 @@
+applications:
+- name: relagaBack
+  memory: 256MB

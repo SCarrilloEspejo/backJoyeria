@@ -1,0 +1,629 @@
+---
+swagger: "2.0"
+info:
+  description: ""
+  version: "1.0.0"
+  title: "regalajoyas"
+  termsOfService: "http://swagger.io/terms/"
+  contact:
+    email: "apiteam@swagger.io"
+  license:
+    name: "Apache 2.0"
+    url: "http://www.apache.org/licenses/LICENSE-2.0.html"
+host: "relagaback.eu-gb.mybluemix.net"
+basePath: "/v2"
+tags:
+- name: "order"
+  description: ""
+schemes:
+- "https"
+paths:
+  /order/email:
+    post:
+      tags:
+      - "product"
+      summary: "send Email"
+      description: ""
+      operationId: "email"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "objectEmail"
+        required: true
+        schema:
+          $ref: "#/definitions/Email"
+      responses:
+        "200":
+          description: "Ok"
+        "405":
+          description: "Invalid input"
+      x-swagger-router-controller: "Order"
+  /interno/visit:
+    get:
+      tags:
+      - "interno"
+      summary: "visitas"
+      description: ""
+      operationId: "visit"
+      responses:
+        "200":
+          description: "Ok"
+        "405":
+          description: "Invalid input"
+      x-swagger-router-controller: "visit"
+  
+  /interno/newVisit:
+    post:
+      tags:
+      - "interno"
+      summary: "visitas"
+      description: ""
+      operationId: "newVisit"
+      responses:
+        "200":
+          description: "Ok"
+        "405":
+          description: "Invalid input"
+      x-swagger-router-controller: "visit"
+      
+  /interno/newVisitcj:
+    post:
+      tags:
+      - "interno"
+      summary: "visitas"
+      description: ""
+      operationId: "newVisitcj"
+      responses:
+        "200":
+          description: "Ok"
+        "405":
+          description: "Invalid input"
+      x-swagger-router-controller: "visit"
+  /order/newOrder:
+    post:
+      tags:
+      - "product"
+      summary: "Add a new order"
+      description: ""
+      operationId: "newOrder"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Pet object that needs to be added to the store"
+        required: true
+        schema:
+          $ref: "#/definitions/Order"
+      responses:
+        "200":
+          description: "Ok"
+        "405":
+          description: "Invalid input"
+      x-swagger-router-controller: "Order"
+  /order/newOrderCj:
+    post:
+      tags:
+      - "product"
+      summary: "Add a new order"
+      description: ""
+      operationId: "newOrderCj"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Pet object that needs to be added to the store"
+        required: true
+        schema:
+          $ref: "#/definitions/Order"
+      responses:
+        "200":
+          description: "Ok"
+        "405":
+          description: "Invalid input"
+      x-swagger-router-controller: "Order"
+  
+  /product/byRef:
+    get:
+      tags:
+      - "product"
+      summary: "Find me product"
+      description: ""
+      operationId: "findProduct"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "ref"
+        in: "header"
+        description: "Status values that need to be considered for filter"
+        required: true
+        type: "string"
+        items:
+          type: "string"
+          default: "available"
+      responses:
+        "200":
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/Product"
+        "400":
+          description: "Invalid status value"
+      x-swagger-router-controller: "Product"
+
+  
+  /order/promociones:
+    get:
+      tags:
+      - "order"
+      summary: "Find me promocion"
+      description: ""
+      operationId: "promocion"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "codigo"
+        in: "header"
+        description: "Status values that need to be considered for filter"
+        required: true
+        type: "string"
+        items:
+          type: "string"
+          default: "available"
+      responses:
+        "200":
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/Product"
+        "400":
+          description: "Invalid status value"
+      x-swagger-router-controller: "Product"
+  
+  /listProduct/byCategoria:
+    get:
+      tags:
+      - "product"
+      summary: "Find me product"
+      description: ""
+      operationId: "categoria"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "categoria"
+        in: "header"
+        description: "Status values that need to be considered for filter"
+        required: true
+        type: "string"
+        items:
+          type: "string"
+          default: "available"
+      responses:
+        "200":
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/Product"
+        "400":
+          description: "Invalid status value"
+      x-swagger-router-controller: "Product"
+  /listProduct/specialProduct:
+    get:
+      tags:
+      - "product"
+      summary: "Find me product"
+      description: ""
+      operationId: "special"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "PARAMETRO"
+        in: "header"
+        description: ""
+        required: false
+        type: "string"
+        items:
+          type: "boolean"
+          default: false                                                                  
+      responses:
+        "200":
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/Product"
+        "400":
+          description: "Invalid status value"
+      x-swagger-router-controller: "Product"
+  
+  /morver/byCategoria:
+    get:
+      tags:
+      - "product"
+      summary: "Find me product"
+      description: ""
+      operationId: "mvcategoria"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "relojes"
+        in: "header"
+        description: "Status values that need to be considered for filter"
+        required: true
+        type: "number"
+      - name: "firmas"
+        in: "header"
+        description: "Status values that need to be considered for filter"
+        required: true
+        type: "number"
+      - name: "oro"
+        in: "header"
+        description: "Status values that need to be considered for filter"
+        required: true
+        type: "number"
+      - name: "plata"
+        in: "header"
+        description: "Status values that need to be considered for filter"
+        required: true
+        type: "number"
+      - name: "regalos"
+        in: "header"
+        description: "Status values that need to be considered for filter"
+        required: true
+        type: "number"
+      - name: "ofertas"
+        in: "header"
+        description: "Status values that need to be considered for filter"
+        required: true
+        type: "number"
+      responses:
+        "200":
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/Product"
+        "400":
+          description: "Invalid status value"
+      x-swagger-router-controller: "Product"
+  /listReloj/byCategoria:
+    get:
+      tags:
+      - "product"
+      summary: "Find me product"
+      description: ""
+      operationId: "categoriaReloj"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "txtSearch"
+        in: "header"
+        description: "Status values that need to be considered for filter"
+        required: false
+        type: "string"
+        items:
+          type: "string"
+          default: "available"
+      - name: "familia"
+        in: "header"
+        description: "Status values that need to be considered for filter"
+        required: true
+        type: "number"
+      responses:
+        "200":
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/Product"
+        "400":
+          description: "Invalid status value"
+      x-swagger-router-controller: "Product"
+  
+  /listProduct/index:
+    get:
+      tags:
+      - "product"
+      summary: "Find me product"
+      description: ""
+      operationId: "portada"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "row"
+        in: "header"
+        description: "Status values that need to be considered for filter"
+        required: true
+        type: "string"
+        items:
+          type: "string"
+          default: "available"
+      responses:
+        "200":
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/Product"
+        "400":
+          description: "Invalid status value"
+      x-swagger-router-controller: "Product"
+  /relojeria/index:
+    get:
+      tags:
+      - "product"
+      summary: "Find me product"
+      description: ""
+      operationId: "relojeriaIndex"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "row"
+        in: "header"
+        description: "Status values that need to be considered for filter"
+        required: true
+        type: "string"
+        items:
+          type: "string"
+          default: "available"
+      responses:
+        "200":
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/Product"
+        "400":
+          description: "Invalid status value"
+      x-swagger-router-controller: "relojeria"
+  /relojeria/familias:
+    get:
+      tags:
+      - "product"
+      summary: "Find me product"
+      description: ""
+      operationId: "relojeriasFamilias"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "relojeria"
+        in: "header"
+        description: "Status values that need to be considered for filter"
+        required: true
+        type: "number"
+      responses:
+        "200":
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/Product"
+        "400":
+          description: "Invalid status value"
+      x-swagger-router-controller: "relojeria"
+  /relojeria/search:
+    get:
+      tags:
+      - "product"
+      summary: "Find me product"
+      description: ""
+      operationId: "Search"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "hombre"
+        in: "header"
+        description: ""
+        required: true
+        type: "number"
+      - name: "mujer"
+        in: "header"
+        description: ""
+        required: true
+        type: "number"
+      - name: "nino"
+        in: "header"
+        description: ""
+        required: true
+        type: "number"
+      - name: "nina"
+        in: "header"
+        description: ""
+        required: true
+        type: "number"
+      - name: "familia"
+        in: "header"
+        description: ""
+        required: true
+        type: "number"
+      responses:
+        "200":
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/Product"
+        "400":
+          description: "Invalid status value"
+      x-swagger-router-controller: "relojeria"
+  /relojeria/search2:
+    get:
+      tags:
+      - "product"
+      summary: "Find me product"
+      description: ""
+      operationId: "Search2"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "relojes"
+        in: "header"
+        description: ""
+        required: true
+        type: "number"
+      - name: "hombre"
+        in: "header"
+        description: ""
+        required: true
+        type: "number"
+      - name: "mujer"
+        in: "header"
+        description: ""
+        required: true
+        type: "number"
+      - name: "nino"
+        in: "header"
+        description: ""
+        required: true
+        type: "number"
+      - name: "nina"
+        in: "header"
+        description: ""
+        required: true
+        type: "number"
+      - name: "familia"
+        in: "header"
+        description: ""
+        required: true
+        type: "number"
+      responses:
+        "200":
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/Product"
+        "400":
+          description: "Invalid status value"
+      x-swagger-router-controller: "relojeria"
+  /relojeria/searchDescription:
+    get:
+      tags:
+      - "product"
+      summary: "Find me product"
+      description: ""
+      operationId: "SearchDescription"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "relojes"
+        in: "header"
+        description: ""
+        required: true
+        type: "number"
+      - name: "hombre"
+        in: "header"
+        description: ""
+        required: true
+        type: "number"
+      - name: "mujer"
+        in: "header"
+        description: ""
+        required: true
+        type: "number"
+      - name: "nino"
+        in: "header"
+        description: ""
+        required: true
+        type: "number"
+      - name: "nina"
+        in: "header"
+        description: ""
+        required: true
+        type: "number"
+      - name: "familia"
+        in: "header"
+        description: ""
+        required: true
+        type: "number"
+      - name: "description"
+        in: "header"
+        description: ""
+        required: true
+        type: "string"
+      responses:
+        "200":
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/Product"
+        "400":
+          description: "Invalid status value"
+      x-swagger-router-controller: "relojeria"
+definitions:
+  Product:
+    type: "array"
+    items:
+      $ref: "#/definitions/Product_inner"
+  Email:
+    type: "object"
+    properties:
+      subject:
+        type: "string"
+      body:
+        type: "string"
+      from:
+        type: "string"
+  Order:
+    type: "object"
+    properties:
+      id:
+        type: "number"
+      date:
+        type: "string"
+      name:
+        type: "string"
+      address:
+        type: "string"
+      population:
+        type: "string"
+      province:
+        type: "string"
+      cp:
+        type: "string"
+      telefono:
+        type: "string"
+      email:
+        type: "string"
+      accept:
+        type: "number"
+      publicidad:
+        type: "number"
+      total:
+        type: "number"
+      details:
+        type: "array"
+        items:
+          $ref: '#/definitions/Order_Details'
+  Order_Details:
+    type: "object"
+    properties:
+      idLinea:
+        type: "number"
+      ID:
+        type: "number"
+      DESCRIP_CORTA: 
+        type: "string"
+      OBSERVACIONES: 
+        type: "string"
+      IMG:
+        type: "string"
+      PVENTAS:
+          type: "number"
+  ApiResponse:
+    type: "object"
+    properties:
+      code:
+        type: "integer"
+        format: "int32"
+      type:
+        type: "string"
+      message:
+        type: "string"
+  Product_inner:
+    type: "object"
+    properties:
+      id:
+        type: "string"
+      ref:
+        type: "string"
+      descrip_short:
+        type: "string"
+      pventa:
+        type: "string"
+      stock:
+        type: "integer"
+      obs:
+        type: "string"
+externalDocs:
+  description: "Find out more about Swagger"
+  url: "http://swagger.io"
